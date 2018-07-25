@@ -46,7 +46,7 @@ const CareerSection = ({data}) => (
         <div className="col-lg-12 text-center">
           <h2>Available Positions</h2>
           { data.map(document => (
-              <Link to="/job/senior-mobile-developer" className="btn btn-primary pddng">
+              <Link to={`/job/${document.node.id}`} className="btn btn-primary pddng">
                 <i className="fa fa-code"></i>
                 {document.node.title}
               </Link>

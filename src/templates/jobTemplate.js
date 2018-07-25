@@ -1,11 +1,12 @@
-import React from 'react'
-import Confetti      from '../assets/images/confetti.svg'
-import Growth        from '../assets/images/growth.svg'
-import Sprout        from '../assets/images/sprout.svg'
-import Workspace     from '../assets/images/workspace.svg'
-import ClikTeam      from '../assets/images/clikteam2018.jpg'
+import React            from 'react'
+import Confetti         from '../assets/images/confetti.svg'
+import Growth           from '../assets/images/growth.svg'
+import Sprout           from '../assets/images/sprout.svg'
+import Workspace        from '../assets/images/workspace.svg'
+import ClikTeam         from '../assets/images/clikteam2018.jpg'
+import EachJobTeamplate from '../components/eachJobTemplate'
 
-const JobTemplate = (props) => {
+const JobTemplate = ({data}) => {
   return(
   <div className="job-template" >
     <div id="inSlider" className="carousel carousel-fade job-override" data-ride="carousel">
@@ -24,24 +25,24 @@ const JobTemplate = (props) => {
     <section id="features" className="container services">
       <div className="row">
         <div className="col-sm-12 job-page-padding">
-          <h1> {props.jobTitle} </h1>
+          <h1> {data.strapiJob.title} </h1>
           <hr className="big"/>
           <h3>Who we are:</h3>
 
           <div className="row">
             <div className="col-md-8 col-sm-12">
-            <p> We are an internationally-funded FinTech startup looking for the brightest minds in Cambodia. Working with some of the biggest names in the FinTech industry, we've created a product that will revolutionise the local market before taking on the world. We're ready to take our business to the next level and for that we need you! Although we're a small team at the moment, we've planned for rapid growth - the sooner you join our team, the greater the benefits you'll receive. Committed to becoming a world-class organisation, our employees and customers are our focus.Our team is comprised of local and international professionals who are driven by innovation and excellence. We want to put Cambodia on the map in the FinTech sector, and as our global investors agree, Clik is the answer. At this stage, we have the funding to offer secure jobs with a lot of room for growth, training and career progression - it's a win-win situation. Our office is currently under transformation as we want to provide the best work environment possible for our employees.  
-            </p>
+            <p>{data.strapiAboutus.description}</p>
           </div>
 
           <div className="col-md-4 col-sm-12 img-fluid">
-              <img src={ClikTeam} alt="team" style={{width: '100%'}}/>
+            <img src={ClikTeam} alt="team" style={{width: '100%'}}/>
           </div>
           </div>
           <br/>
           
           <hr className="big"/>
-          {props.children}
+
+          <EachJobTeamplate data={data.strapiJob}/>
           
           <hr className="big"/>
           <h3>Amazing Bonuses and Benefits provided by Clik:</h3>
@@ -81,3 +82,17 @@ const JobTemplate = (props) => {
 )}
 
 export default JobTemplate
+
+export const query = graphql`  
+  query JobTemplate($id: String!) {
+    strapiJob(id: {eq: $id}) {
+      title
+      What_we_are_looking_for
+      What_you_will_do
+    },
+    strapiAboutus{
+      title
+      description
+    }
+  }
+`
