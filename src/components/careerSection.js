@@ -5,7 +5,7 @@ import Growth        from '../assets/images/growth.svg'
 import Sprout        from '../assets/images/sprout.svg'
 import Workspace     from '../assets/images/workspace.svg'
 
-const CareerSection = () => (
+const CareerSection = ({data}) => (
   <section className="features gray-section" id="career">
     <div className="container team-container">
       <div className="row">
@@ -45,38 +45,13 @@ const CareerSection = () => (
       <div className="row" style={{paddingTop: '50px', paddingBottom: '50px'}}>
         <div className="col-lg-12 text-center">
           <h2>Available Positions</h2>
-          <Link to="/job/senior-mobile-developer" className="btn btn-primary pddng">
-            <i className="fa fa-code"></i>
-            Senior Mobile Developer
-          </Link>
-          <Link to="/job/front-end-web-developer" className="btn btn-primary pddng">
-            <i className="fa fa-code"></i>
-            Front End Web Developer
-          </Link>
-          <Link to="/job/software-qa-tester" className="btn btn-primary pddng">
-            <i className="fa fa-code"></i>
-            Software QA Tester
-          </Link>
-          <Link to="/job/backend-developer" className="btn btn-primary pddng">
-            <i className="fa fa-code"></i>
-            Backend (Server Side) Developer (Java or .NET)
-          </Link>
-          <Link to="/job/core-middleware-developer" className="btn btn-primary pddng">
-            <i className="fa fa-code"></i>
-            .NET Core Middleware Developer
-          </Link>
-          <Link to="/job/junior-android-developer" className="btn btn-primary pddng">
-            <i className="fa fa-code"></i>
-            Junior Android Developer
-          </Link>
-          <Link to="/job/junior-ios-developer" className="btn btn-primary pddng">
-            <i className="fa fa-code"></i>
-            Junior IOS Developer
-          </Link>
-          <Link to="/job/senior-react-native-developer" className="btn btn-primary pddng">
-            <i className="fa fa-code"></i>
-            Senior React Native Developer
-          </Link>
+          { data.map(document => (
+              <Link to="/job/senior-mobile-developer" className="btn btn-primary pddng">
+                <i className="fa fa-code"></i>
+                {document.node.title}
+              </Link>
+            ))
+          }
         </div>
       </div>
 

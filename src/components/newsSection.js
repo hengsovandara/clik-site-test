@@ -1,8 +1,9 @@
 import React         from 'react'
 import Link          from 'gatsby-link'
 import DarrenMatthew from '../assets/images/Matthew&Darren-01.jpg'
+import Moment        from 'react-moment'
 
-const NewsSection = () => (
+const NewsSection = ({data}) => (
   <section className="features" id="news">
     <div className="container team-container">
       <div className="row">
@@ -11,24 +12,34 @@ const NewsSection = () => (
           <h1>News</h1>
         </div>
       </div>
-      <div className="row blog-post">
-        <div className="col-sm-12 col-md-4">
-          <img src={DarrenMatthew} alt="" className="img-fluid" />
-        </div>
-        <div className="col-sm-12 col-md-8">
-          <h2>Capturing the loyalty of the Cambodian consumer with fintech</h2>
-          <div className="news-credit">
-            <strong className="commens-name">Hanamariya Halim</strong>
-            <small className="text-muted">Publication date 26 May 2017 | 11:48 ICT</small>
+
+      { data.map(document => (
+          <div className="row blog-post">
+            <div className="col-sm-12 col-md-4">
+              <img src={DarrenMatthew} alt="" className="img-fluid" />
+            </div>
+            <div className="col-sm-12 col-md-8">
+              <h2>{document.node.headline}</h2>
+              <div className="news-credit">
+                <strong className="commens-name">{document.node.publisher}</strong>
+                <span style={{marginLeft: '5px'}}/>
+                <small className="text-muted">Publication date
+                  <span style={{marginLeft: '5px'}}/>
+                  <Moment parse="YYYY-MM-DD HH:mm:ss">
+                    {document.node.publish_date}
+                  </Moment>
+                </small>
+              </div>
+               
+              <hr/>
+              <p>{document.node.content}</p>
+              <a href={document.node.post_link} target="blank">
+                <button className="btn btn-primary">Read More</button>
+              </a>
+            </div>
           </div>
-           
-          <hr/>
-          <p>Our CEO and CTO were featured in the Phnom Penh Post, check out their thoughts on the FinTech market in the article here: “Capturing the loyalty of the Cambodian consumer with Fintech”</p>
-          <a href="http://www.phnompenhpost.com/supplements/capturing-loyalty-cambodian-consumer-fintech" target="blank">
-            <button className="btn btn-primary">Read More</button>
-          </a>
-        </div>
-      </div>
+        ))
+      }
     </div>
   </section>
 )
