@@ -9,7 +9,7 @@ import '../assets/stylesheets/header.css'
 const Header = (props) => (
   <nav className="navbar navbar-default navbar-expand-md navbar-light fixed-top">
     <div className='container'>
-      <Link className="navbar-brand" to="#">
+      <Link className="navbar-brand" to="/">
         <img src={ logo } alt='logo' width={32}/>
       </Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
