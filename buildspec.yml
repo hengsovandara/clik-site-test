@@ -3,10 +3,18 @@ version: 0.2
 phases:
   install:
     commands:
+      - npm i npm@latest -g
       - npm install --global gatsby-cli
       - npm install
+      - pip install --upgrade pip
       - pip install --upgrade awscli
+  pre_build:
+    commands:
+      - ls
   build:
     commands:
       - gatsby build
       - aws s3 cp public/ s3://test-code-build
+  post_build:
+    commands:
+      - ls
