@@ -4,8 +4,6 @@ phases:
   install:
     commands:
       - npm i npm@latest -g
-      - npm install --global gatsby-cli
-      - npm install
       - pip install --upgrade pip
       - pip install --upgrade awscli
   pre_build:
