@@ -1,0 +1,11 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - npm install --global gatsby-cli
+      - npm install
+      - pip install --upgrade awscli
+  build:
+    commands:
+      - gatsby build
