@@ -9,3 +9,4 @@ phases:
   build:
     commands:
       - gatsby build
+      - aws s3 sync _site/ s3://test-code-build
