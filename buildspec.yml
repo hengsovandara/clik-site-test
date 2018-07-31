@@ -32,7 +32,7 @@ phases:
     commands:
       - gatsby build
       - ls
-      - aws s3 ./public/* s3://test-code-build
+      - aws s3 sync ./public/* s3://test-code-build
   post_build:
     commands:
       - ls
