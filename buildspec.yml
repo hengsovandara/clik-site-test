@@ -13,9 +13,5 @@ phases:
       - ls
   build:
     commands:
-      - gatsby build
       - ls
       - aws s3 ls
-  post_build:
-    commands:
-      - ls
