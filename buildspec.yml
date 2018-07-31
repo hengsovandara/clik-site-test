@@ -15,7 +15,7 @@ phases:
     commands:
       - gatsby build
       - ls
-      - aws s3 cp ./public/* s3://s3-ap-southeast-1.amazonaws.com/test-code-build
+      - aws s3 ls
   post_build:
     commands:
       - ls
